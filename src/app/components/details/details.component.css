@@ -1,0 +1,23 @@
+.poster{
+    float: left;
+    width: 300px;
+    margin-right: 15px;
+}
+
+.h1{
+    float: left;
+    margin-top: 0px;
+}
+
+.info{
+    float: left;
+    width: calc(100% - 315px);
+}
+
+.container{
+    height: 100%;
+}
+
+.footer{
+    clear: both;
+}

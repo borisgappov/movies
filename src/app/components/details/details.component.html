@@ -1,0 +1,28 @@
+<div #container class="container">
+
+  <div class="poster" *ngIf="details && details.Poster!='N/A'">
+    <img [src]="details.Poster"/>
+  </div>
+
+  <h1 class="title" *ngIf="details">
+    {{details.Title}}
+  </h1>
+
+  <div class="info">
+    <div *ngFor="let item of details | keyvalue">
+      <span *ngIf="item.value != 'N/A' && item.key != 'Poster'"><b>{{item.key}}</b>: {{item.value}}</span>
+    </div>
+  </div>
+
+  <div class="footer"></div>
+
+  <dx-load-panel
+  #loadPanel
+  shadingColor="rgba(0,0,0,0.4)"
+  [visible]="false"
+  [showIndicator]="true"
+  [showPane]="true"
+  [shading]="true"
+  [closeOnOutsideClick]="false"></dx-load-panel>
+
+</div>

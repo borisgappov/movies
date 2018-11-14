@@ -1,0 +1,36 @@
+<dx-data-grid id="gridContainer"
+    [dataSource]="dataSource"
+    [showBorders]="true"
+    keyExpr="imdbID"
+    [masterDetail]="{ enabled: true, template: 'detail' }">
+
+    <dxi-column dataField="Poster" cellTemplate="posterTemplate" [width]="60">
+        <dxo-header-filter [allowSearch]="true"></dxo-header-filter>
+    </dxi-column>
+    <dxi-column dataField="Title" cellTemplate="titleTemplate"></dxi-column>
+    <dxi-column dataField="Year" [width]="70"></dxi-column>
+    <dxi-column dataField="Type" [width]="70"></dxi-column>
+
+    <div *dxTemplate="let item of 'titleTemplate'">
+        <a href="javascript: void(0);" (click)="openDetails(item)">{{item.value}}</a>
+    </div>
+
+    <div *dxTemplate="let item of 'posterTemplate'">
+      <img *ngIf="item.value && item.value != 'N/A'" [src]="item.value" height="50px" />
+    </div>    
+
+    <dxo-search-panel
+        [visible]="true"
+        [highlightSearchText]="false"
+        [(text)]="filter"></dxo-search-panel>
+
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-header-filter [visible]="true"></dxo-header-filter>
+
+    <dxo-pager [visible]="false"></dxo-pager>
+
+    <div *dxTemplate="let item of 'detail'">
+        <app-details [embeddedMovieId]="item.data.imdbID"></app-details>
+    </div>
+
+</dx-data-grid>
